@@ -432,6 +432,52 @@
             }
         }
 
+
+        .badge {
+            display: inline-block;
+            padding: 1px 6px;
+            font-size: 10px;
+            font-weight: 700;
+            border-radius: 4px;
+            margin-left: 4px;
+            vertical-align: middle;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-developer {
+            background: linear-gradient(90deg, #0a0a1a, #1a1a3a, #0a0a1a);
+            color: #00eaff;
+            border: 1px solid #00eaff;
+            box-shadow: 0 0 8px rgba(0, 234, 255, 0.4), inset 0 0 4px rgba(0, 234, 255, 0.1);
+            text-shadow: 0 0 4px rgba(0, 234, 255, 0.8);
+            font-family: 'Courier New', monospace;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .badge-developer::before {
+            content: '</>';
+            font-size: 9px;
+            margin-right: 2px;
+            opacity: 0.9;
+        }
+
+        .badge-admin {
+            background: linear-gradient(135deg, #ffd700, #ffb800, #ffd700);
+            color: #3d2800;
+            border: 1px solid #ffd700;
+            box-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+            text-shadow: 0 1px 1px rgba(255, 255, 255, 0.3);
+            font-family: 'Georgia', serif;
+        }
+
+        .badge-admin::before {
+            content: '👑';
+            font-size: 10px;
+            margin-right: 2px;
+        }
+
         .post-footer {
             display: flex;
             gap: 24px;
@@ -653,6 +699,16 @@
                 document.getElementById('modalName').focus();
                 return;
             }
+
+            if (name === '沈雄') {
+                const postPwd = prompt('沈雄 身份验证：请输入发帖密码：');
+                if (postPwd === null) return;
+                if (postPwd !== 'polytrack114514') {
+                    alert('发帖密码错误！');
+                    return;
+                }
+            }
+
             if (!title && !content) {
                 document.getElementById('modalTitle').focus();
                 return;
@@ -750,7 +806,13 @@
                             <div class="post-author">
                                 <div class="avatar">${post.avatar.startsWith('http') ? `<img src="${post.avatar}" alt="avatar">` : post.avatar}</div>
                                 <div class="author-info">
-                                    <span class="author-name">${escapeHtml(post.author)}</span>
+                                    <span class="author-name">
+                                        ${escapeHtml(post.author)}
+                                        ${post.author === '沈雄' ? `
+                                            <span class="badge badge-developer">开发者</span>
+                                            <span class="badge badge-admin">管理者</span>
+                                        ` : ''}
+                                    </span>
                                     <span class="post-time">${formatTime(post.time)}</span>
                                 </div>
                             </div>
