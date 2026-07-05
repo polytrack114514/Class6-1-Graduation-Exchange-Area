@@ -402,6 +402,36 @@
             font-weight: 400;
         }
 
+
+        .delete-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 100, 100, 0.3);
+            color: rgba(255, 120, 120, 0.7);
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 12px;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .post-card:hover .delete-btn {
+            opacity: 1;
+        }
+
+        .delete-btn:hover {
+            background: rgba(255, 80, 80, 0.15);
+            border-color: rgba(255, 100, 100, 0.6);
+            color: rgba(255, 150, 150, 1);
+        }
+
+        @media (max-width: 600px) {
+            .delete-btn {
+                opacity: 1;
+            }
+        }
+
         .post-footer {
             display: flex;
             gap: 24px;
@@ -724,6 +754,7 @@
                                     <span class="post-time">${formatTime(post.time)}</span>
                                 </div>
                             </div>
+                            <button class="delete-btn" onclick="deletePost('${post.id}')" title="删除帖子">🗑 删除</button>
                         </div>
                         ${post.title ? `<div class="post-title">${escapeHtml(post.title)}</div>` : ''}
                         <div class="post-content">${escapeHtml(post.content)}</div>
@@ -740,6 +771,20 @@
                     </div>
                 `;
             }).join('');
+        }
+
+        async function deletePost(postId) {
+            const password = prompt('请输入删除密码:');
+            if (password === null) return;
+            if (password !== '114514') {
+                alert('密码错误，无法删除！');
+                return;
+            }
+            if (!confirm('确定要删除这条帖子吗？')) return;
+            posts = posts.filter(p => String(p.id) !== String(postId));
+            await savePosts();
+            renderPosts();
+            alert('🗑 帖子已删除');
         }
 
         // ==================== 工具函数 ====================
