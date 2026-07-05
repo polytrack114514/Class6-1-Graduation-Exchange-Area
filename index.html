@@ -340,6 +340,7 @@
             justify-content: space-between;
             align-items: flex-start;
             margin-bottom: 14px;
+            gap: 10px;
         }
 
         .post-author {
@@ -351,6 +352,7 @@
         .avatar {
             width: 40px;
             height: 40px;
+            min-width: 40px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.08);
             display: flex;
@@ -359,6 +361,7 @@
             font-size: 1.1rem;
             border: 1px solid var(--border);
             overflow: hidden;
+            flex-shrink: 0;
         }
 
         .avatar img {
@@ -371,12 +374,20 @@
             display: flex;
             flex-direction: column;
             gap: 2px;
+            min-width: 0;
+            flex: 1;
         }
 
         .author-name {
             font-size: 0.92rem;
             font-weight: 600;
             color: var(--text-primary);
+            word-break: break-word;
+            line-height: 1.4;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 4px;
         }
 
         .post-time {
@@ -894,8 +905,10 @@
                                     <span class="post-time">${formatTime(post.time)}</span>
                                 </div>
                             </div>
-                            <button class="pin-btn" onclick="togglePin('${post.id}')" title="置顶/取消置顶">${post.pinned ? '📌 取消置顶' : '📌 置顶'}</button>
-                            <button class="delete-btn" onclick="deletePost('${post.id}')" title="删除帖子">🗑 删除</button>
+                            <div style="display: flex; flex-shrink: 0; gap: 4px;">
+                                <button class="pin-btn" onclick="togglePin('${post.id}')" title="置顶/取消置顶">${post.pinned ? '📌 取消置顶' : '📌 置顶'}</button>
+                                <button class="delete-btn" onclick="deletePost('${post.id}')" title="删除帖子">🗑 删除</button>
+                            </div>
                         </div>
                         ${post.title ? `<div class="post-title">${post.pinned ? '📌 ' : ''}${escapeHtml(post.title)}</div>` : ''}
                         <div class="post-content">${escapeHtml(post.content)}</div>
