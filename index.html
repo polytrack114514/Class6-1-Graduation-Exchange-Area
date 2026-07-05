@@ -7,16 +7,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #000000;
-            --surface: rgba(20, 20, 25, 0.75);
-            --surface-hover: rgba(30, 30, 38, 0.85);
-            --text-primary: #f0f0f5;
-            --text-secondary: #888899;
-            --text-muted: #555566;
-            --accent: #e8e8f0;
-            --accent-hover: #ffffff;
-            --border: rgba(255, 255, 255, 0.06);
-            --border-focus: rgba(255, 255, 255, 0.15);
+            --bg: #ffffff;
+            --surface: rgba(245, 245, 248, 0.8);
+            --surface-hover: rgba(235, 235, 240, 0.9);
+            --text-primary: #1a1a2e;
+            --text-secondary: #666677;
+            --text-muted: #9999aa;
+            --accent: #4a4a6a;
+            --accent-hover: #2a2a4a;
+            --border: rgba(0, 0, 0, 0.08);
+            --border-focus: rgba(0, 0, 0, 0.15);
             --danger: #ff5555;
             --gold: #ffd700;
             --gold-hover: #ffe44d;
@@ -43,7 +43,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('https://i.imglt.com/20260704/3ce40be8ab8646abcedcdae6572a6ae8.png') center/cover no-repeat;
+            background: transparent;
             z-index: 0;
         }
 
@@ -53,7 +53,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.45);
+            background: rgba(255, 255, 255, 0.0);
             z-index: 1;
         }
 
@@ -630,7 +630,7 @@
                 title: title,
                 content: content,
                 author: name,
-                avatar: getRandomAvatar(),
+                avatar: getAvatar(name),
                 time: Date.now(),
                 likes: 0,
                 comments: 0
@@ -711,7 +711,7 @@
                     <div class="post-card" data-id="${post.id}">
                         <div class="post-header">
                             <div class="post-author">
-                                <div class="avatar">${post.avatar}</div>
+                                <div class="avatar">${post.avatar.startsWith('http') ? `<img src="${post.avatar}" alt="avatar">` : post.avatar}</div>
                                 <div class="author-info">
                                     <span class="author-name">${escapeHtml(post.author)}</span>
                                     <span class="post-time">${formatTime(post.time)}</span>
@@ -750,9 +750,11 @@
             return new Date(timestamp).toLocaleDateString('zh-CN');
         }
 
-        function getRandomAvatar() {
-            const avatars = ['🎓', '📚', '✏️', '🎒', '🏫', '📝', '🏅', '🏆', '🎈', '🎁', '📷', '💌', '🌟', '💫', '⭐', '🌈', '🌻', '🎶'];
-            return avatars[Math.floor(Math.random() * avatars.length)];
+        function getAvatar(name) {
+            if (name === '沈雄') {
+                return 'https://i.imglt.com/20260705/bd01211953488764f07ea3f000b353d0.jpg';
+            }
+            return '🌟';
         }
 
         function escapeHtml(text) {
