@@ -403,6 +403,41 @@
         }
 
 
+
+        .pin-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            color: rgba(255, 215, 0, 0.8);
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 12px;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            margin-right: 4px;
+        }
+
+        .post-card:hover .pin-btn {
+            opacity: 1;
+        }
+
+        .pin-btn:hover {
+            background: rgba(255, 215, 0, 0.15);
+            border-color: rgba(255, 215, 0, 0.6);
+            color: #ffd700;
+        }
+
+        .post-card:has(.pinned) {
+            border-color: rgba(255, 215, 0, 0.3);
+        }
+
+        @media (max-width: 600px) {
+            .pin-btn {
+                opacity: 1;
+            }
+        }
+
         .delete-btn {
             background: transparent;
             border: 1px solid rgba(255, 100, 100, 0.3);
@@ -427,7 +462,42 @@
         }
 
         @media (max-width: 600px) {
-            .delete-btn {
+    
+        .pin-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            color: rgba(255, 215, 0, 0.8);
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 12px;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            margin-right: 4px;
+        }
+
+        .post-card:hover .pin-btn {
+            opacity: 1;
+        }
+
+        .pin-btn:hover {
+            background: rgba(255, 215, 0, 0.15);
+            border-color: rgba(255, 215, 0, 0.6);
+            color: #ffd700;
+        }
+
+        .post-card:has(.pinned) {
+            border-color: rgba(255, 215, 0, 0.3);
+        }
+
+        @media (max-width: 600px) {
+            .pin-btn {
+                opacity: 1;
+            }
+        }
+
+        .delete-btn {
                 opacity: 1;
             }
         }
@@ -783,9 +853,17 @@
             let displayPosts = [...posts];
 
             if (currentTab === 'hot') {
-                displayPosts.sort((a, b) => (b.likes || 0) - (a.likes || 0));
+                displayPosts.sort((a, b) => {
+                    if (a.pinned && !b.pinned) return -1;
+                    if (!a.pinned && b.pinned) return 1;
+                    return (b.likes || 0) - (a.likes || 0);
+                });
             } else {
-                displayPosts.sort((a, b) => (b.time || 0) - (a.time || 0));
+                displayPosts.sort((a, b) => {
+                    if (a.pinned && !b.pinned) return -1;
+                    if (!a.pinned && b.pinned) return 1;
+                    return (b.time || 0) - (a.time || 0);
+                });
             }
 
             if (displayPosts.length === 0) {
@@ -816,9 +894,10 @@
                                     <span class="post-time">${formatTime(post.time)}</span>
                                 </div>
                             </div>
+                            <button class="pin-btn" onclick="togglePin('${post.id}')" title="置顶/取消置顶">${post.pinned ? '📌 取消置顶' : '📌 置顶'}</button>
                             <button class="delete-btn" onclick="deletePost('${post.id}')" title="删除帖子">🗑 删除</button>
                         </div>
-                        ${post.title ? `<div class="post-title">${escapeHtml(post.title)}</div>` : ''}
+                        ${post.title ? `<div class="post-title">${post.pinned ? '📌 ' : ''}${escapeHtml(post.title)}</div>` : ''}
                         <div class="post-content">${escapeHtml(post.content)}</div>
                         <div class="post-footer">
                             <button class="action-btn ${isLiked ? 'liked' : ''}" onclick="toggleLike('${post.id}')">
@@ -833,6 +912,22 @@
                     </div>
                 `;
             }).join('');
+        }
+
+        async function togglePin(postId) {
+            const password = prompt('请输入管理员密码：');
+            if (password === null) return;
+            if (password !== '1028') {
+                alert('密码错误！');
+                return;
+            }
+            const post = posts.find(p => String(p.id) === String(postId));
+            if (post) {
+                post.pinned = !post.pinned;
+                await savePosts();
+                renderPosts();
+                alert(post.pinned ? '📌 已置顶' : '📌 已取消置顶');
+            }
         }
 
         async function deletePost(postId) {
