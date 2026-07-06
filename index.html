@@ -619,6 +619,171 @@
             font-size: 0.9rem;
         }
 
+        /* 评论区 */
+        .comments-section {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid var(--border);
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .comments-section.show {
+            display: block;
+        }
+
+        .comments-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 14px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .comment-item {
+            display: flex;
+            gap: 10px;
+            padding: 10px 14px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .comment-avatar {
+            width: 28px;
+            height: 28px;
+            min-width: 28px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            border: 1px solid var(--border);
+        }
+
+        .comment-body {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .comment-author {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 3px;
+        }
+
+        .comment-text {
+            font-size: 0.88rem;
+            color: rgba(240, 240, 245, 0.75);
+            line-height: 1.6;
+            word-break: break-word;
+        }
+
+        .comment-time {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        .comment-input-area {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .comment-input-row {
+            display: flex;
+            gap: 8px;
+        }
+
+        .comment-input {
+            flex: 1;
+            padding: 8px 12px;
+            background: #22222e;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 10px;
+            color: var(--text-primary);
+            font-size: 0.85rem;
+            font-family: inherit;
+            outline: none;
+        }
+
+        .comment-input:focus {
+            border-color: var(--border-focus);
+        }
+
+        .comment-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .comment-textarea {
+            width: 100%;
+            padding: 8px 12px;
+            background: #22222e;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 10px;
+            color: var(--text-primary);
+            font-size: 0.85rem;
+            font-family: inherit;
+            outline: none;
+            resize: vertical;
+            min-height: 50px;
+        }
+
+        .comment-textarea:focus {
+            border-color: var(--border-focus);
+        }
+
+        .comment-submit {
+            padding: 8px 16px;
+            background: var(--gold);
+            color: #000;
+            border: none;
+            border-radius: 10px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s;
+            font-family: inherit;
+            align-self: flex-end;
+        }
+
+        .comment-submit:hover {
+            background: var(--gold-hover);
+        }
+
+        .comment-submit:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .comments-toggle-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 0.84rem;
+            cursor: pointer;
+            transition: all 0.25s;
+            font-family: inherit;
+            padding: 4px 8px;
+            border-radius: 8px;
+        }
+
+        .comments-toggle-btn:hover {
+            color: var(--text-secondary);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .comments-toggle-btn.active {
+            color: var(--accent-light);
+        }
+
         @media (max-width: 600px) {
             .header h1 {
                 font-size: 2.2rem;
@@ -807,7 +972,7 @@
                 avatar: getAvatar(name),
                 time: Date.now(),
                 likes: 0,
-                comments: 0
+                comments: []
             };
 
             // 先读取最新数据，再写入（避免覆盖他人帖子）
@@ -917,10 +1082,31 @@
                                 <span>${isLiked ? '❤️' : '🤍'}</span>
                                 <span>${post.likes || 0}</span>
                             </button>
-                            <button class="action-btn">
+                            <button class="comments-toggle-btn" onclick="toggleComments('${post.id}')">
                                 <span>💬</span>
-                                <span>${post.comments || 0}</span>
+                                <span>${(post.comments && post.comments.length) || 0}</span>
                             </button>
+                        </div>
+                        <div class="comments-section" id="comments-${post.id}">
+                            <div class="comments-list" id="comments-list-${post.id}">
+                                ${(post.comments && post.comments.length > 0) ? post.comments.map(c => `
+                                    <div class="comment-item">
+                                        <div class="comment-avatar">🌟</div>
+                                        <div class="comment-body">
+                                            <div class="comment-author">${escapeHtml(c.author)}</div>
+                                            <div class="comment-text">${escapeHtml(c.content)}</div>
+                                            <div class="comment-time">${formatTime(c.time)}</div>
+                                        </div>
+                                    </div>
+                                `).join('') : '<div style="color: var(--text-muted); font-size: 0.85rem; padding: 8px 0;">暂无评论，来做第一个评论的人吧</div>'}
+                            </div>
+                            <div class="comment-input-area">
+                                <div class="comment-input-row">
+                                    <input type="text" class="comment-input" id="comment-name-${post.id}" placeholder="你的名字" maxlength="20">
+                                </div>
+                                <textarea class="comment-textarea" id="comment-text-${post.id}" placeholder="写下你的评论..." maxlength="300"></textarea>
+                                <button class="comment-submit" onclick="submitComment('${post.id}')">发送评论</button>
+                            </div>
                         </div>
                     </div>
                 `;
@@ -955,6 +1141,54 @@
             await savePosts();
             renderPosts();
             alert('🗑 帖子已删除');
+        }
+
+        // ==================== 评论功能 ====================
+        function toggleComments(postId) {
+            const section = document.getElementById('comments-' + postId);
+            if (section) {
+                section.classList.toggle('show');
+            }
+        }
+
+        async function submitComment(postId) {
+            const nameInput = document.getElementById('comment-name-' + postId);
+            const textInput = document.getElementById('comment-text-' + postId);
+            const name = nameInput.value.trim();
+            const content = textInput.value.trim();
+
+            if (!name) {
+                nameInput.focus();
+                return;
+            }
+            if (!content) {
+                textInput.focus();
+                return;
+            }
+
+            const post = posts.find(p => String(p.id) === String(postId));
+            if (!post) return;
+
+            if (!post.comments) post.comments = [];
+
+            post.comments.push({
+                id: Date.now() + '_' + Math.random().toString(36).substr(2, 6),
+                author: name,
+                content: content,
+                time: Date.now()
+            });
+
+            nameInput.value = '';
+            textInput.value = '';
+
+            await savePosts();
+            renderPosts();
+
+            // 重新展开评论区
+            setTimeout(() => {
+                const section = document.getElementById('comments-' + postId);
+                if (section) section.classList.add('show');
+            }, 50);
         }
 
         // ==================== 工具函数 ====================
