@@ -1098,6 +1098,7 @@
                                             <div class="comment-text">${escapeHtml(c.content)}</div>
                                             <div class="comment-time">${formatTime(c.time)}</div>
                                         </div>
+                                        <button class="action-btn" style="color:#ff5555;font-size:12px;" onclick="deleteComment('${post.id}', '${c.id}')">🗑️</button>
                                     </div>
                                 `).join('') : '<div style="color: var(--text-muted); font-size: 0.85rem; padding: 8px 0;">暂无评论，来做第一个评论的人吧</div>'}
                             </div>
@@ -1186,6 +1187,23 @@
             renderPosts();
 
             // 重新展开评论区
+            setTimeout(() => {
+                const section = document.getElementById('comments-' + postId);
+                if (section) section.classList.add('show');
+            }, 50);
+        }
+
+        async function deleteComment(postId, commentId) {
+            const pwd = prompt('请输入删除密码：');
+            if (pwd !== '1028') {
+                alert('密码错误');
+                return;
+            }
+            const post = posts.find(p => String(p.id) === String(postId));
+            if (!post || !post.comments) return;
+            post.comments = post.comments.filter(c => String(c.id) !== String(commentId));
+            await savePosts();
+            renderPosts();
             setTimeout(() => {
                 const section = document.getElementById('comments-' + postId);
                 if (section) section.classList.add('show');
