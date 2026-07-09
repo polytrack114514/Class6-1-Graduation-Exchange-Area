@@ -883,7 +883,7 @@
         async function loadPosts() {
             isLoading = true;
             try {
-                const resp = await fetch(API_URL);
+                const resp = await fetch(API_URL + '/posts');
                 if (resp.ok) {
                     const data = await resp.json();
                     posts = data.posts || [];
@@ -898,10 +898,8 @@
 
         // ==================== 保存帖子到云端 ====================
         async function savePosts() {
-            try {
-                await fetch(API_URL, {
-                    method: 'PUT',
-                    headers: { 'Content-Type': 'application/json' },
+            // No-op for Worker API - data saved via individual API calls
+        },
                     body: JSON.stringify({ posts: posts })
                 });
             } catch (err) {
@@ -947,16 +945,6 @@
                 document.getElementById('modalName').focus();
                 return;
             }
-
-            if (name === '沈雄') {
-                const postPwd = prompt('沈雄 身份验证：请输入发帖密码：');
-                if (postPwd === null) return;
-                if (postPwd !== 'polytrack114514') {
-                    alert('发帖密码错误！');
-                    return;
-                }
-            }
-
             if (!title && !content) {
                 document.getElementById('modalTitle').focus();
                 return;
@@ -967,35 +955,25 @@
             btn.textContent = '发布中...';
 
             const newPost = {
-                id: Date.now() + '_' + Math.random().toString(36).substr(2, 9),
                 title: title,
                 content: content,
                 author: name,
-                avatar: getAvatar(name),
+                avatar: getRandomAvatar(),
                 time: Date.now(),
-                likes: 0,
                 comments: []
             };
 
-            // 先读取最新数据，再写入（避免覆盖他人帖子）
             try {
-                const resp = await fetch(API_URL);
-                const data = await resp.json();
-                const currentPosts = data.posts || [];
-                currentPosts.unshift(newPost);
-                posts = currentPosts;
-
-                const saveResp = await fetch(API_URL, {
-                    method: 'PUT',
+                const resp = await fetch(API_URL + '/posts', {
+                    method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ posts: posts })
+                    body: JSON.stringify(newPost)
                 });
-
-                if (saveResp.ok) {
+                if (resp.ok) {
                     closeModal();
                     currentTab = 'new';
                     updateTabs();
-                    renderPosts();
+                    await loadPosts();
                 } else {
                     alert('发布失败，请重试');
                 }
@@ -1140,10 +1118,13 @@
                 return;
             }
             if (!confirm('确定要删除这条帖子吗？')) return;
-            posts = posts.filter(p => String(p.id) !== String(postId));
-            await savePosts();
-            renderPosts();
-            alert('🗑 帖子已删除');
+            try {
+                await fetch(API_URL + '/posts/' + postId, { method: 'DELETE' });
+                await loadPosts();
+                alert('🗑 帖子已删除');
+            } catch (err) {
+                alert('删除失败: ' + err.message);
+            }
         }
 
         // ==================== 评论功能 ====================
