@@ -492,74 +492,59 @@
             background: rgba(255, 255, 255, 0.1);
         }
 
-        /* 登录区域 */
-        .login-area {
+        /* 图片上传 */
+        .image-input-row {
             display: flex;
+            gap: 8px;
             align-items: center;
-            gap: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 12px;
         }
-        .login-user {
+        .image-input {
+            flex: 1;
+            padding: 10px 14px;
+            background: #22222e;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-size: 0.88rem;
+            font-family: inherit;
+            outline: none;
+        }
+        .image-input:focus {
+            border-color: var(--border-focus);
+        }
+        .image-input::placeholder {
+            color: var(--text-muted);
+        }
+        .post-images {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 14px;
+        }
+        .post-image {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            object-fit: cover;
+        }
+
+        /* 匿名选项 */
+        .anon-checkbox {
             display: flex;
             align-items: center;
             gap: 8px;
-            padding: 6px 14px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            font-size: 0.85rem;
-            color: var(--text-primary);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            cursor: default;
-        }
-        .login-user .user-avatar-small {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.08);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-        }
-        .login-user .user-name {
-            font-weight: 500;
-            color: var(--text-primary);
-            max-width: 100px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-        .btn-login {
-            padding: 8px 18px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 12px;
+            margin-bottom: 12px;
             color: var(--text-secondary);
             font-size: 0.85rem;
             cursor: pointer;
-            font-family: inherit;
-            transition: all 0.25s;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
         }
-        .btn-login:hover {
-            color: var(--text-primary);
-            border-color: var(--border-focus);
-        }
-        .btn-logout {
-            padding: 4px 10px;
-            background: transparent;
-            border: none;
-            color: var(--text-muted);
-            font-size: 0.75rem;
+        .anon-checkbox input {
+            width: 16px;
+            height: 16px;
             cursor: pointer;
-            font-family: inherit;
-            margin-left: 4px;
-        }
-        .btn-logout:hover {
-            color: var(--danger);
+            accent-color: var(--gold);
         }
 
         @media (max-width: 600px) {
@@ -640,74 +625,59 @@
             background: rgba(255, 255, 255, 0.1);
         }
 
-        /* 登录区域 */
-        .login-area {
+        /* 图片上传 */
+        .image-input-row {
             display: flex;
+            gap: 8px;
             align-items: center;
-            gap: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 12px;
         }
-        .login-user {
+        .image-input {
+            flex: 1;
+            padding: 10px 14px;
+            background: #22222e;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-size: 0.88rem;
+            font-family: inherit;
+            outline: none;
+        }
+        .image-input:focus {
+            border-color: var(--border-focus);
+        }
+        .image-input::placeholder {
+            color: var(--text-muted);
+        }
+        .post-images {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 14px;
+        }
+        .post-image {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            object-fit: cover;
+        }
+
+        /* 匿名选项 */
+        .anon-checkbox {
             display: flex;
             align-items: center;
             gap: 8px;
-            padding: 6px 14px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            font-size: 0.85rem;
-            color: var(--text-primary);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            cursor: default;
-        }
-        .login-user .user-avatar-small {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.08);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-        }
-        .login-user .user-name {
-            font-weight: 500;
-            color: var(--text-primary);
-            max-width: 100px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-        .btn-login {
-            padding: 8px 18px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 12px;
+            margin-bottom: 12px;
             color: var(--text-secondary);
             font-size: 0.85rem;
             cursor: pointer;
-            font-family: inherit;
-            transition: all 0.25s;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
         }
-        .btn-login:hover {
-            color: var(--text-primary);
-            border-color: var(--border-focus);
-        }
-        .btn-logout {
-            padding: 4px 10px;
-            background: transparent;
-            border: none;
-            color: var(--text-muted);
-            font-size: 0.75rem;
+        .anon-checkbox input {
+            width: 16px;
+            height: 16px;
             cursor: pointer;
-            font-family: inherit;
-            margin-left: 4px;
-        }
-        .btn-logout:hover {
-            color: var(--danger);
+            accent-color: var(--gold);
         }
 
         @media (max-width: 600px) {
@@ -789,74 +759,59 @@
             background: rgba(255, 255, 255, 0.1);
         }
 
-        /* 登录区域 */
-        .login-area {
+        /* 图片上传 */
+        .image-input-row {
             display: flex;
+            gap: 8px;
             align-items: center;
-            gap: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 12px;
         }
-        .login-user {
+        .image-input {
+            flex: 1;
+            padding: 10px 14px;
+            background: #22222e;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-size: 0.88rem;
+            font-family: inherit;
+            outline: none;
+        }
+        .image-input:focus {
+            border-color: var(--border-focus);
+        }
+        .image-input::placeholder {
+            color: var(--text-muted);
+        }
+        .post-images {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 14px;
+        }
+        .post-image {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            object-fit: cover;
+        }
+
+        /* 匿名选项 */
+        .anon-checkbox {
             display: flex;
             align-items: center;
             gap: 8px;
-            padding: 6px 14px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            font-size: 0.85rem;
-            color: var(--text-primary);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            cursor: default;
-        }
-        .login-user .user-avatar-small {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.08);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-        }
-        .login-user .user-name {
-            font-weight: 500;
-            color: var(--text-primary);
-            max-width: 100px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-        .btn-login {
-            padding: 8px 18px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 12px;
+            margin-bottom: 12px;
             color: var(--text-secondary);
             font-size: 0.85rem;
             cursor: pointer;
-            font-family: inherit;
-            transition: all 0.25s;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
         }
-        .btn-login:hover {
-            color: var(--text-primary);
-            border-color: var(--border-focus);
-        }
-        .btn-logout {
-            padding: 4px 10px;
-            background: transparent;
-            border: none;
-            color: var(--text-muted);
-            font-size: 0.75rem;
+        .anon-checkbox input {
+            width: 16px;
+            height: 16px;
             cursor: pointer;
-            font-family: inherit;
-            margin-left: 4px;
-        }
-        .btn-logout:hover {
-            color: var(--danger);
+            accent-color: var(--gold);
         }
 
         @media (max-width: 600px) {
@@ -1191,74 +1146,59 @@
             background: rgba(255, 255, 255, 0.1);
         }
 
-        /* 登录区域 */
-        .login-area {
+        /* 图片上传 */
+        .image-input-row {
             display: flex;
+            gap: 8px;
             align-items: center;
-            gap: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 12px;
         }
-        .login-user {
+        .image-input {
+            flex: 1;
+            padding: 10px 14px;
+            background: #22222e;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-size: 0.88rem;
+            font-family: inherit;
+            outline: none;
+        }
+        .image-input:focus {
+            border-color: var(--border-focus);
+        }
+        .image-input::placeholder {
+            color: var(--text-muted);
+        }
+        .post-images {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 14px;
+        }
+        .post-image {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            object-fit: cover;
+        }
+
+        /* 匿名选项 */
+        .anon-checkbox {
             display: flex;
             align-items: center;
             gap: 8px;
-            padding: 6px 14px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            font-size: 0.85rem;
-            color: var(--text-primary);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            cursor: default;
-        }
-        .login-user .user-avatar-small {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.08);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-        }
-        .login-user .user-name {
-            font-weight: 500;
-            color: var(--text-primary);
-            max-width: 100px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-        .btn-login {
-            padding: 8px 18px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 12px;
+            margin-bottom: 12px;
             color: var(--text-secondary);
             font-size: 0.85rem;
             cursor: pointer;
-            font-family: inherit;
-            transition: all 0.25s;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
         }
-        .btn-login:hover {
-            color: var(--text-primary);
-            border-color: var(--border-focus);
-        }
-        .btn-logout {
-            padding: 4px 10px;
-            background: transparent;
-            border: none;
-            color: var(--text-muted);
-            font-size: 0.75rem;
+        .anon-checkbox input {
+            width: 16px;
+            height: 16px;
             cursor: pointer;
-            font-family: inherit;
-            margin-left: 4px;
-        }
-        .btn-logout:hover {
-            color: var(--danger);
+            accent-color: var(--gold);
         }
 
         @media (max-width: 600px) {
@@ -1330,9 +1270,6 @@
             <input type="text" class="search-input" id="searchInput" placeholder="搜索帖子..." oninput="onSearch()">
             <button class="search-clear" id="searchClear" onclick="clearSearch()">清除</button>
         </div>
-        <div class="login-area" id="loginArea">
-            <!-- 动态渲染 -->
-        </div>
 
         <div class="posts-list" id="postsList">
             <div class="loading">正在加载帖子...</div>
@@ -1346,7 +1283,14 @@
             <div class="modal-title">发布帖子</div>
             <input type="text" class="modal-input" id="modalName" placeholder="你的名字" maxlength="20">
             <input type="text" class="modal-input" id="modalTitle" placeholder="标题" maxlength="50">
+            <div class="image-input-row">
+                <input type="text" class="image-input" id="modalImage" placeholder="图片链接（可选，粘贴图片URL）" maxlength="500">
+            </div>
             <textarea class="modal-textarea" id="modalContent" placeholder="内容" maxlength="1000"></textarea>
+            <label class="anon-checkbox">
+                <input type="checkbox" id="modalAnon">
+                <span>匿名发帖（不显示名字）</span>
+            </label>
             <button class="modal-submit" id="submitBtn" onclick="submitPost()">发布</button>
         </div>
     </div>
@@ -1410,6 +1354,8 @@
             document.getElementById('modalName').value = '';
             document.getElementById('modalTitle').value = '';
             document.getElementById('modalContent').value = '';
+            document.getElementById('modalImage').value = '';
+            document.getElementById('modalAnon').checked = false;
         }
 
         document.getElementById('modalOverlay').addEventListener('click', function(e) {
@@ -1735,15 +1681,6 @@
                 renderPosts();
             });
         });
-        // ==================== 自动心跳（每12小时访问一次，防止JSONBlob 3天过期） ====================
-        function heartbeat() {
-            fetch(API_URL, { method: 'HEAD' }).catch(() => {});
-        }
-        // 页面加载时执行一次，然后每12小时执行一次
-        heartbeat();
-        setInterval(heartbeat, 12 * 60 * 60 * 1000);
-
-        // ==================== 初始化 ====================
 
         // ==================== 搜索功能 ====================
         let searchKeyword = '';
@@ -1762,98 +1699,16 @@
             renderPosts();
         }
 
-        // ==================== 用户登录功能 ====================
-        let currentUser = JSON.parse(localStorage.getItem('class61_user')) || null;
-
-        function renderLoginArea() {
-            const area = document.getElementById('loginArea');
-            if (!area) return;
-            if (currentUser) {
-                area.innerHTML = `
-                    <div class="login-user">
-                        <div class="user-avatar-small">${currentUser.avatar}</div>
-                        <span class="user-name">${escapeHtml(currentUser.name)}</span>
-                        <button class="btn-logout" onclick="logoutUser()">退出</button>
-                    </div>
-                `;
-            } else {
-                area.innerHTML = `<button class="btn-login" onclick="openLoginModal()">登录</button>`;
-            }
+        // ==================== 自动心跳（每12小时访问一次，防止JSONBlob 3天过期） ====================
+        function heartbeat() {
+            fetch(API_URL, { method: 'HEAD' }).catch(() => {});
         }
+        // 页面加载时执行一次，然后每12小时执行一次
+        heartbeat();
+        setInterval(heartbeat, 12 * 60 * 60 * 1000);
 
-        function openLoginModal() {
-            const name = prompt('请输入你的名字:');
-            if (!name || !name.trim()) return;
-            const trimmed = name.trim();
-            const avatar = getAvatar(trimmed);
-            currentUser = { name: trimmed, avatar: avatar };
-            localStorage.setItem('class61_user', JSON.stringify(currentUser));
-            renderLoginArea();
-        }
-
-        function logoutUser() {
-            currentUser = null;
-            localStorage.removeItem('class61_user');
-            renderLoginArea();
-        }
-
-        // 修改 openModal 使用当前登录用户
-        const originalOpenModal = openModal;
-        openModal = function() {
-            document.getElementById('modalOverlay').classList.add('show');
-            setTimeout(() => {
-                if (currentUser) {
-                    document.getElementById('modalName').value = currentUser.name;
-                    document.getElementById('modalTitle').focus();
-                } else {
-                    document.getElementById('modalName').focus();
-                }
-            }, 100);
-        };
-
-        // 修改 submitPost 使用当前登录用户
-        const originalSubmitPost = submitPost;
-        submitPost = async function() {
-            let name = document.getElementById('modalName').value.trim();
-            const title = document.getElementById('modalTitle').value.trim();
-            const content = document.getElementById('modalContent').value.trim();
-            if (!name) { document.getElementById('modalName').focus(); return; }
-            if (!title && !content) { document.getElementById('modalTitle').focus(); return; }
-
-            // 保存用户信息
-            if (!currentUser) {
-                currentUser = { name: name, avatar: getAvatar(name) };
-                localStorage.setItem('class61_user', JSON.stringify(currentUser));
-                renderLoginArea();
-            }
-
-            const btn = document.getElementById('submitBtn');
-            btn.disabled = true; btn.textContent = '发布中...';
-            const newPost = {
-                id: Date.now() + '_' + Math.random().toString(36).substr(2, 9),
-                title: title, content: content, author: name,
-                avatar: currentUser ? currentUser.avatar : getAvatar(name),
-                time: Date.now(), comments: [], pinned: false
-            };
-            try {
-                const resp = await fetch(API_URL);
-                const data = await resp.json();
-                const currentPosts = data.posts || [];
-                currentPosts.unshift(newPost);
-                posts = currentPosts;
-                const saveResp = await fetch(API_URL, {
-                    method: 'PUT',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ posts: posts })
-                });
-                if (saveResp.ok) { closeModal(); currentTab = 'new'; updateTabs(); renderPosts(); }
-                else { alert('发布失败，请重试'); }
-            } catch (err) { alert('发布失败: ' + err.message); }
-            btn.disabled = false; btn.textContent = '发布';
-        };
-
+        // ==================== 初始化 ====================
         loadPosts();
-        renderLoginArea();
     
     
 
