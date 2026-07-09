@@ -869,9 +869,8 @@
     </div>
 
     <script>
-        // ==================== JSONBlob 配置 ====================
+        // ==================== Worker API 配置 ====================
         const API_URL = 'https://class61-api.polytrack1.workers.dev';
-        const API_URL = 'https://api.jsonblob.com/' + BLOB_ID;
 
         // ==================== 数据 ====================
         let posts = [];
@@ -1233,13 +1232,6 @@
                 renderPosts();
             });
         });
-        // ==================== 自动心跳（每12小时访问一次，防止JSONBlob 3天过期） ====================
-        function heartbeat() {
-            fetch(API_URL, { method: 'HEAD' }).catch(() => {});
-        }
-        // 页面加载时执行一次，然后每12小时执行一次
-        heartbeat();
-        setInterval(heartbeat, 12 * 60 * 60 * 1000);
 
         // ==================== 初始化 ====================
         loadPosts();
