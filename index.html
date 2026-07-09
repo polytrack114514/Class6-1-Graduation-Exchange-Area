@@ -443,6 +443,125 @@
             border-color: rgba(255, 215, 0, 0.3);
         }
 
+        
+        /* 搜索栏 */
+        .search-bar {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        .search-input {
+            flex: 1;
+            padding: 10px 16px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            font-family: inherit;
+            outline: none;
+            transition: all 0.25s;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .search-input:focus {
+            border-color: var(--border-focus);
+            box-shadow: 0 0 0 1px var(--border-focus);
+        }
+        .search-input::placeholder {
+            color: var(--text-muted);
+        }
+        .search-clear {
+            padding: 10px 16px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.25s;
+            display: none;
+        }
+        .search-clear.show {
+            display: block;
+        }
+        .search-clear:hover {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* 登录区域 */
+        .login-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .login-user {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            font-size: 0.85rem;
+            color: var(--text-primary);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            cursor: default;
+        }
+        .login-user .user-avatar-small {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+        .login-user .user-name {
+            font-weight: 500;
+            color: var(--text-primary);
+            max-width: 100px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .btn-login {
+            padding: 8px 18px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.25s;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .btn-login:hover {
+            color: var(--text-primary);
+            border-color: var(--border-focus);
+        }
+        .btn-logout {
+            padding: 4px 10px;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            cursor: pointer;
+            font-family: inherit;
+            margin-left: 4px;
+        }
+        .btn-logout:hover {
+            color: var(--danger);
+        }
+
         @media (max-width: 600px) {
             .pin-btn {
                 opacity: 1;
@@ -470,6 +589,125 @@
             background: rgba(255, 80, 80, 0.15);
             border-color: rgba(255, 100, 100, 0.6);
             color: rgba(255, 150, 150, 1);
+        }
+
+        
+        /* 搜索栏 */
+        .search-bar {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        .search-input {
+            flex: 1;
+            padding: 10px 16px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            font-family: inherit;
+            outline: none;
+            transition: all 0.25s;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .search-input:focus {
+            border-color: var(--border-focus);
+            box-shadow: 0 0 0 1px var(--border-focus);
+        }
+        .search-input::placeholder {
+            color: var(--text-muted);
+        }
+        .search-clear {
+            padding: 10px 16px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.25s;
+            display: none;
+        }
+        .search-clear.show {
+            display: block;
+        }
+        .search-clear:hover {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* 登录区域 */
+        .login-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .login-user {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            font-size: 0.85rem;
+            color: var(--text-primary);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            cursor: default;
+        }
+        .login-user .user-avatar-small {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+        .login-user .user-name {
+            font-weight: 500;
+            color: var(--text-primary);
+            max-width: 100px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .btn-login {
+            padding: 8px 18px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.25s;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .btn-login:hover {
+            color: var(--text-primary);
+            border-color: var(--border-focus);
+        }
+        .btn-logout {
+            padding: 4px 10px;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            cursor: pointer;
+            font-family: inherit;
+            margin-left: 4px;
+        }
+        .btn-logout:hover {
+            color: var(--danger);
         }
 
         @media (max-width: 600px) {
@@ -500,6 +738,125 @@
 
         .post-card:has(.pinned) {
             border-color: rgba(255, 215, 0, 0.3);
+        }
+
+        
+        /* 搜索栏 */
+        .search-bar {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        .search-input {
+            flex: 1;
+            padding: 10px 16px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            font-family: inherit;
+            outline: none;
+            transition: all 0.25s;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .search-input:focus {
+            border-color: var(--border-focus);
+            box-shadow: 0 0 0 1px var(--border-focus);
+        }
+        .search-input::placeholder {
+            color: var(--text-muted);
+        }
+        .search-clear {
+            padding: 10px 16px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.25s;
+            display: none;
+        }
+        .search-clear.show {
+            display: block;
+        }
+        .search-clear:hover {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* 登录区域 */
+        .login-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .login-user {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            font-size: 0.85rem;
+            color: var(--text-primary);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            cursor: default;
+        }
+        .login-user .user-avatar-small {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+        .login-user .user-name {
+            font-weight: 500;
+            color: var(--text-primary);
+            max-width: 100px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .btn-login {
+            padding: 8px 18px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.25s;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .btn-login:hover {
+            color: var(--text-primary);
+            border-color: var(--border-focus);
+        }
+        .btn-logout {
+            padding: 4px 10px;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            cursor: pointer;
+            font-family: inherit;
+            margin-left: 4px;
+        }
+        .btn-logout:hover {
+            color: var(--danger);
         }
 
         @media (max-width: 600px) {
@@ -785,6 +1142,125 @@
             color: var(--accent-light);
         }
 
+        
+        /* 搜索栏 */
+        .search-bar {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        .search-input {
+            flex: 1;
+            padding: 10px 16px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            font-family: inherit;
+            outline: none;
+            transition: all 0.25s;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .search-input:focus {
+            border-color: var(--border-focus);
+            box-shadow: 0 0 0 1px var(--border-focus);
+        }
+        .search-input::placeholder {
+            color: var(--text-muted);
+        }
+        .search-clear {
+            padding: 10px 16px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.25s;
+            display: none;
+        }
+        .search-clear.show {
+            display: block;
+        }
+        .search-clear:hover {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* 登录区域 */
+        .login-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .login-user {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            font-size: 0.85rem;
+            color: var(--text-primary);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            cursor: default;
+        }
+        .login-user .user-avatar-small {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+        .login-user .user-name {
+            font-weight: 500;
+            color: var(--text-primary);
+            max-width: 100px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .btn-login {
+            padding: 8px 18px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.25s;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .btn-login:hover {
+            color: var(--text-primary);
+            border-color: var(--border-focus);
+        }
+        .btn-logout {
+            padding: 4px 10px;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            cursor: pointer;
+            font-family: inherit;
+            margin-left: 4px;
+        }
+        .btn-logout:hover {
+            color: var(--danger);
+        }
+
         @media (max-width: 600px) {
             .header h1 {
                 font-size: 2.2rem;
@@ -849,6 +1325,13 @@
                 </button>
             </div>
             <button class="fab-post" onclick="openModal()">✨ 发布帖子</button>
+        </div>
+        <div class="search-bar">
+            <input type="text" class="search-input" id="searchInput" placeholder="搜索帖子..." oninput="onSearch()">
+            <button class="search-clear" id="searchClear" onclick="clearSearch()">清除</button>
+        </div>
+        <div class="login-area" id="loginArea">
+            <!-- 动态渲染 -->
         </div>
 
         <div class="posts-list" id="postsList">
@@ -1261,7 +1744,116 @@
         setInterval(heartbeat, 12 * 60 * 60 * 1000);
 
         // ==================== 初始化 ====================
+
+        // ==================== 搜索功能 ====================
+        let searchKeyword = '';
+
+        function onSearch() {
+            searchKeyword = document.getElementById('searchInput').value.trim().toLowerCase();
+            const clearBtn = document.getElementById('searchClear');
+            clearBtn.classList.toggle('show', searchKeyword.length > 0);
+            renderPosts();
+        }
+
+        function clearSearch() {
+            document.getElementById('searchInput').value = '';
+            searchKeyword = '';
+            document.getElementById('searchClear').classList.remove('show');
+            renderPosts();
+        }
+
+        // ==================== 用户登录功能 ====================
+        let currentUser = JSON.parse(localStorage.getItem('class61_user')) || null;
+
+        function renderLoginArea() {
+            const area = document.getElementById('loginArea');
+            if (!area) return;
+            if (currentUser) {
+                area.innerHTML = `
+                    <div class="login-user">
+                        <div class="user-avatar-small">${currentUser.avatar}</div>
+                        <span class="user-name">${escapeHtml(currentUser.name)}</span>
+                        <button class="btn-logout" onclick="logoutUser()">退出</button>
+                    </div>
+                `;
+            } else {
+                area.innerHTML = `<button class="btn-login" onclick="openLoginModal()">登录</button>`;
+            }
+        }
+
+        function openLoginModal() {
+            const name = prompt('请输入你的名字:');
+            if (!name || !name.trim()) return;
+            const trimmed = name.trim();
+            const avatar = getAvatar(trimmed);
+            currentUser = { name: trimmed, avatar: avatar };
+            localStorage.setItem('class61_user', JSON.stringify(currentUser));
+            renderLoginArea();
+        }
+
+        function logoutUser() {
+            currentUser = null;
+            localStorage.removeItem('class61_user');
+            renderLoginArea();
+        }
+
+        // 修改 openModal 使用当前登录用户
+        const originalOpenModal = openModal;
+        openModal = function() {
+            document.getElementById('modalOverlay').classList.add('show');
+            setTimeout(() => {
+                if (currentUser) {
+                    document.getElementById('modalName').value = currentUser.name;
+                    document.getElementById('modalTitle').focus();
+                } else {
+                    document.getElementById('modalName').focus();
+                }
+            }, 100);
+        };
+
+        // 修改 submitPost 使用当前登录用户
+        const originalSubmitPost = submitPost;
+        submitPost = async function() {
+            let name = document.getElementById('modalName').value.trim();
+            const title = document.getElementById('modalTitle').value.trim();
+            const content = document.getElementById('modalContent').value.trim();
+            if (!name) { document.getElementById('modalName').focus(); return; }
+            if (!title && !content) { document.getElementById('modalTitle').focus(); return; }
+
+            // 保存用户信息
+            if (!currentUser) {
+                currentUser = { name: name, avatar: getAvatar(name) };
+                localStorage.setItem('class61_user', JSON.stringify(currentUser));
+                renderLoginArea();
+            }
+
+            const btn = document.getElementById('submitBtn');
+            btn.disabled = true; btn.textContent = '发布中...';
+            const newPost = {
+                id: Date.now() + '_' + Math.random().toString(36).substr(2, 9),
+                title: title, content: content, author: name,
+                avatar: currentUser ? currentUser.avatar : getAvatar(name),
+                time: Date.now(), comments: [], pinned: false
+            };
+            try {
+                const resp = await fetch(API_URL);
+                const data = await resp.json();
+                const currentPosts = data.posts || [];
+                currentPosts.unshift(newPost);
+                posts = currentPosts;
+                const saveResp = await fetch(API_URL, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ posts: posts })
+                });
+                if (saveResp.ok) { closeModal(); currentTab = 'new'; updateTabs(); renderPosts(); }
+                else { alert('发布失败，请重试'); }
+            } catch (err) { alert('发布失败: ' + err.message); }
+            btn.disabled = false; btn.textContent = '发布';
+        };
+
         loadPosts();
+        renderLoginArea();
     
     
 
