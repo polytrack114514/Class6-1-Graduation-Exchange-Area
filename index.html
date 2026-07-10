@@ -482,16 +482,6 @@
             object-fit: cover;
         }
 
-        /* 匿名选项 */
-        .anon-checkbox {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 12px;
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            cursor: pointer;
-        }
         .anon-checkbox input {
             width: 16px;
             height: 16px;
@@ -1094,10 +1084,6 @@
                 <input type="text" class="image-input" id="modalImage" placeholder="图片链接（可选，粘贴图片URL）" maxlength="500">
             </div>
             <textarea class="modal-textarea" id="modalContent" placeholder="内容" maxlength="1000"></textarea>
-            <label class="anon-checkbox">
-                <input type="checkbox" id="modalAnon">
-                <span>匿名发帖（不显示名字）</span>
-            </label>
             <button class="modal-submit" id="submitBtn" onclick="submitPost()">发布</button>
         </div>
     </div>
@@ -1162,7 +1148,6 @@
             document.getElementById('modalTitle').value = '';
             document.getElementById('modalContent').value = '';
             document.getElementById('modalImage').value = '';
-            document.getElementById('modalAnon').checked = false;
         }
 
         document.getElementById('modalOverlay').addEventListener('click', function(e) {
