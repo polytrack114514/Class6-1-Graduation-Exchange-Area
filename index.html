@@ -2807,7 +2807,7 @@
 
         // ==================== 帖子收藏 ====================
         let savedPosts = JSON.parse(localStorage.getItem('class61_saved') || '[]');
-        let currentTab = 'new';
+
 
         function isSaved(postId) {
             return savedPosts.includes(String(postId));
