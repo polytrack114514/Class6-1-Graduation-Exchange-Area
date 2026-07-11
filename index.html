@@ -714,6 +714,32 @@
             color: var(--text-primary);
         }
 
+        
+        /* 在线人数 */
+        .online-count {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-left: auto;
+        }
+        .online-dot {
+            width: 7px;
+            height: 7px;
+            background: #4ade80;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
         @media (max-width: 600px) {
             .pin-btn {
                 opacity: 1;
@@ -1013,6 +1039,32 @@
         .fortune-desc {
             font-size: 0.85rem;
             color: var(--text-muted);
+        }
+
+        
+        /* 在线人数 */
+        .online-count {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-left: auto;
+        }
+        .online-dot {
+            width: 7px;
+            height: 7px;
+            background: #4ade80;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
 
         @media (max-width: 600px) {
@@ -1315,6 +1367,32 @@
         .fortune-desc {
             font-size: 0.85rem;
             color: var(--text-muted);
+        }
+
+        
+        /* 在线人数 */
+        .online-count {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-left: auto;
+        }
+        .online-dot {
+            width: 7px;
+            height: 7px;
+            background: #4ade80;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
 
         @media (max-width: 600px) {
@@ -1870,6 +1948,32 @@
         .fortune-desc {
             font-size: 0.85rem;
             color: var(--text-muted);
+        }
+
+        
+        /* 在线人数 */
+        .online-count {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-left: auto;
+        }
+        .online-dot {
+            width: 7px;
+            height: 7px;
+            background: #4ade80;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
 
         @media (max-width: 600px) {
@@ -2694,6 +2798,58 @@
             result.classList.remove('show');
             setTimeout(() => result.classList.add('show'), 50);
         }
+
+
+        // ==================== 在线人数 ====================
+        let onlineUserId = localStorage.getItem('class61_online_id');
+        if (!onlineUserId) {
+            onlineUserId = 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 8);
+            localStorage.setItem('class61_online_id', onlineUserId);
+        }
+
+        async function updateOnlineStatus() {
+            const now = Date.now();
+            const onlineMinutes = 5;
+            const expireTime = now - onlineMinutes * 60 * 1000;
+
+            try {
+                const resp = await fetch(API_URL);
+                const data = await resp.json();
+                let onlineList = data.online || [];
+
+                // 移除过期用户
+                onlineList = onlineList.filter(u => u.lastActive > expireTime);
+
+                // 更新当前用户
+                const existingIndex = onlineList.findIndex(u => u.id === onlineUserId);
+                if (existingIndex > -1) {
+                    onlineList[existingIndex].lastActive = now;
+                } else {
+                    onlineList.push({ id: onlineUserId, lastActive: now });
+                }
+
+                // 保存
+                data.online = onlineList;
+                await fetch(API_URL, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                // 显示
+                renderOnlineCount(onlineList.length);
+            } catch (e) {}
+        }
+
+        function renderOnlineCount(count) {
+            const el = document.getElementById('onlineCount');
+            if (el) {
+                el.innerHTML = `<span class="online-dot"></span><span>在线 ${count} 人</span>`;
+            }
+        }
+
+        updateOnlineStatus();
+        setInterval(updateOnlineStatus, 60 * 1000);
 
         // ==================== 初始化 ====================
         renderAuthArea();
