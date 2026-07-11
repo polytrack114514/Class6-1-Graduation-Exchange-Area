@@ -1696,6 +1696,8 @@
             document.getElementById('modalTitle').value = '';
             document.getElementById('modalContent').value = '';
             document.getElementById('modalImage').value = '';
+            document.getElementById('modalName').readOnly = false;
+            document.getElementById('modalName').style.opacity = '1';
         }
 
         document.getElementById('modalOverlay').addEventListener('click', function(e) {
@@ -2175,14 +2177,18 @@
             renderAuthArea();
         }
 
-        // Override openModal
+        // Override openModal to require login
         const _origOpenModal = openModal;
         openModal = function() {
-            _origOpenModal();
-            if (currentUser) {
-                document.getElementById('modalName').value = currentUser.name;
-                document.getElementById('modalTitle').focus();
+            if (!currentUser) {
+                openAuthModal();
+                return;
             }
+            _origOpenModal();
+            document.getElementById('modalName').value = currentUser.name;
+            document.getElementById('modalName').readOnly = true;
+            document.getElementById('modalName').style.opacity = '0.6';
+            document.getElementById('modalTitle').focus();
         };
 
         // ==================== 分享功能 ====================
