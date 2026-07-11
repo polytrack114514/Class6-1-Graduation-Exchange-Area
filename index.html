@@ -101,9 +101,7 @@
             background: var(--surface);
             border-radius: 14px;
             border: 1px solid var(--border);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-        }
+                    }
 
         .tab {
             padding: 10px 20px;
@@ -321,9 +319,7 @@
             padding: 24px;
             transition: all 0.3s ease;
             animation: fadeIn 0.4s ease;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-        }
+                    }
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(8px); }
@@ -462,9 +458,7 @@
             border-radius: 12px;
             font-size: 0.85rem;
             color: var(--text-primary);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-        }
+                    }
         .auth-avatar-small {
             width: 24px; height: 24px; border-radius: 50%;
             background: rgba(255,255,255,0.08);
@@ -483,16 +477,14 @@
         .btn-logout:hover { color: var(--danger); }
         .btn-auth {
             padding: 8px 18px;
-            background: var(--surface);
+            background: transparent;
             border: 1px solid var(--border);
-            border-radius: 12px;
+            border-radius: 100px;
             color: var(--text-secondary);
             font-size: 0.85rem;
             cursor: pointer; font-family: inherit;
             transition: all 0.25s;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-        }
+                    }
         .btn-auth:hover {
             color: var(--text-primary);
             border-color: var(--border-focus);
@@ -509,7 +501,7 @@
         }
         .auth-modal-overlay.show { display: flex; }
         .auth-modal {
-            background: #18181f; border-radius: 20px;
+            background: #0f0f0f; border-radius: 20px;
             padding: 36px; width: 90%; max-width: 400px;
             border: 1px solid var(--border);
             box-shadow: 0 20px 60px rgba(0,0,0,0.5);
@@ -526,8 +518,8 @@
         }
         .auth-field input {
             width: 100%; padding: 12px 14px;
-            background: #22222e;
-            border: 1px solid rgba(255,255,255,0.06);
+            background: #1a1a1a;
+            border: 1px solid var(--border);
             border-radius: 12px;
             color: var(--text-primary);
             font-size: 0.9rem; font-family: inherit; outline: none;
@@ -536,13 +528,13 @@
         .auth-field input::placeholder { color: var(--text-muted); }
         .auth-submit {
             width: 100%; padding: 12px;
-            background: var(--gold); color: #000;
+            background: #ffffff; color: #000000;
             border: none; border-radius: 12px;
             font-size: 0.92rem; font-weight: 600;
             cursor: pointer; font-family: inherit;
             transition: all 0.25s; margin-top: 8px;
         }
-        .auth-submit:hover { background: var(--gold-hover); }
+        .auth-submit:hover { background: #e0e0e0; }
         .auth-submit:disabled { opacity: 0.5; cursor: not-allowed; }
         .auth-switch {
             text-align: center; margin-top: 16px;
@@ -580,8 +572,8 @@
         }
         .image-input {
             flex: 1; padding: 10px 14px;
-            background: #22222e;
-            border: 1px solid rgba(255,255,255,0.06);
+            background: #1a1a1a;
+            border: 1px solid var(--border);
             border-radius: 12px;
             color: var(--text-primary);
             font-size: 0.88rem; font-family: inherit; outline: none;
@@ -599,17 +591,15 @@
 
         /* 分享按钮 */
         .btn-share {
-            padding: 12px 20px;
-            background: var(--surface);
+            padding: 10px 18px;
+            background: transparent;
             border: 1px solid var(--border);
-            border-radius: 14px;
+            border-radius: 100px;
             color: var(--text-secondary);
             font-size: 0.92rem; font-weight: 500;
             cursor: pointer; font-family: inherit;
             display: flex; align-items: center; gap: 6px;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            transition: all 0.25s;
+                        transition: all 0.25s;
         }
         .btn-share:hover {
             color: var(--text-primary);
@@ -624,9 +614,7 @@
             padding: 12px 24px; border-radius: 14px;
             font-size: 0.9rem;
             border: 1px solid var(--border-focus);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            opacity: 0; transition: all 0.35s cubic-bezier(0.16,1,0.3,1);
+                        opacity: 0; transition: all 0.35s cubic-bezier(0.16,1,0.3,1);
             pointer-events: none; z-index: 200;
         }
         .share-toast.show {
@@ -636,10 +624,10 @@
         
         /* 烟花 */
         .btn-firework {
-            padding: 12px 20px;
-            background: linear-gradient(135deg, #ff6b6b, #feca57);
-            border: none;
-            border-radius: 14px;
+            padding: 10px 18px;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 100px;
             color: #fff;
             font-size: 0.92rem;
             font-weight: 600;
@@ -652,8 +640,7 @@
             text-shadow: 0 1px 2px rgba(0,0,0,0.2);
         }
         .btn-firework:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255,107,107,0.4);
+            border-color: var(--border-focus);
         }
         #fireworkCanvas {
             position: fixed;
@@ -711,9 +698,7 @@
             border-radius: 12px;
             font-size: 0.85rem;
             color: var(--text-primary);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-        }
+                    }
         .auth-avatar-small {
             width: 24px; height: 24px; border-radius: 50%;
             background: rgba(255,255,255,0.08);
@@ -732,16 +717,14 @@
         .btn-logout:hover { color: var(--danger); }
         .btn-auth {
             padding: 8px 18px;
-            background: var(--surface);
+            background: transparent;
             border: 1px solid var(--border);
-            border-radius: 12px;
+            border-radius: 100px;
             color: var(--text-secondary);
             font-size: 0.85rem;
             cursor: pointer; font-family: inherit;
             transition: all 0.25s;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-        }
+                    }
         .btn-auth:hover {
             color: var(--text-primary);
             border-color: var(--border-focus);
@@ -758,7 +741,7 @@
         }
         .auth-modal-overlay.show { display: flex; }
         .auth-modal {
-            background: #18181f; border-radius: 20px;
+            background: #0f0f0f; border-radius: 20px;
             padding: 36px; width: 90%; max-width: 400px;
             border: 1px solid var(--border);
             box-shadow: 0 20px 60px rgba(0,0,0,0.5);
@@ -775,8 +758,8 @@
         }
         .auth-field input {
             width: 100%; padding: 12px 14px;
-            background: #22222e;
-            border: 1px solid rgba(255,255,255,0.06);
+            background: #1a1a1a;
+            border: 1px solid var(--border);
             border-radius: 12px;
             color: var(--text-primary);
             font-size: 0.9rem; font-family: inherit; outline: none;
@@ -785,13 +768,13 @@
         .auth-field input::placeholder { color: var(--text-muted); }
         .auth-submit {
             width: 100%; padding: 12px;
-            background: var(--gold); color: #000;
+            background: #ffffff; color: #000000;
             border: none; border-radius: 12px;
             font-size: 0.92rem; font-weight: 600;
             cursor: pointer; font-family: inherit;
             transition: all 0.25s; margin-top: 8px;
         }
-        .auth-submit:hover { background: var(--gold-hover); }
+        .auth-submit:hover { background: #e0e0e0; }
         .auth-submit:disabled { opacity: 0.5; cursor: not-allowed; }
         .auth-switch {
             text-align: center; margin-top: 16px;
@@ -829,8 +812,8 @@
         }
         .image-input {
             flex: 1; padding: 10px 14px;
-            background: #22222e;
-            border: 1px solid rgba(255,255,255,0.06);
+            background: #1a1a1a;
+            border: 1px solid var(--border);
             border-radius: 12px;
             color: var(--text-primary);
             font-size: 0.88rem; font-family: inherit; outline: none;
@@ -848,17 +831,15 @@
 
         /* 分享按钮 */
         .btn-share {
-            padding: 12px 20px;
-            background: var(--surface);
+            padding: 10px 18px;
+            background: transparent;
             border: 1px solid var(--border);
-            border-radius: 14px;
+            border-radius: 100px;
             color: var(--text-secondary);
             font-size: 0.92rem; font-weight: 500;
             cursor: pointer; font-family: inherit;
             display: flex; align-items: center; gap: 6px;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            transition: all 0.25s;
+                        transition: all 0.25s;
         }
         .btn-share:hover {
             color: var(--text-primary);
@@ -873,9 +854,7 @@
             padding: 12px 24px; border-radius: 14px;
             font-size: 0.9rem;
             border: 1px solid var(--border-focus);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            opacity: 0; transition: all 0.35s cubic-bezier(0.16,1,0.3,1);
+                        opacity: 0; transition: all 0.35s cubic-bezier(0.16,1,0.3,1);
             pointer-events: none; z-index: 200;
         }
         .share-toast.show {
@@ -885,10 +864,10 @@
         
         /* 烟花 */
         .btn-firework {
-            padding: 12px 20px;
-            background: linear-gradient(135deg, #ff6b6b, #feca57);
-            border: none;
-            border-radius: 14px;
+            padding: 10px 18px;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 100px;
             color: #fff;
             font-size: 0.92rem;
             font-weight: 600;
@@ -901,8 +880,7 @@
             text-shadow: 0 1px 2px rgba(0,0,0,0.2);
         }
         .btn-firework:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255,107,107,0.4);
+            border-color: var(--border-focus);
         }
         #fireworkCanvas {
             position: fixed;
@@ -961,9 +939,7 @@
             border-radius: 12px;
             font-size: 0.85rem;
             color: var(--text-primary);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-        }
+                    }
         .auth-avatar-small {
             width: 24px; height: 24px; border-radius: 50%;
             background: rgba(255,255,255,0.08);
@@ -982,16 +958,14 @@
         .btn-logout:hover { color: var(--danger); }
         .btn-auth {
             padding: 8px 18px;
-            background: var(--surface);
+            background: transparent;
             border: 1px solid var(--border);
-            border-radius: 12px;
+            border-radius: 100px;
             color: var(--text-secondary);
             font-size: 0.85rem;
             cursor: pointer; font-family: inherit;
             transition: all 0.25s;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-        }
+                    }
         .btn-auth:hover {
             color: var(--text-primary);
             border-color: var(--border-focus);
@@ -1008,7 +982,7 @@
         }
         .auth-modal-overlay.show { display: flex; }
         .auth-modal {
-            background: #18181f; border-radius: 20px;
+            background: #0f0f0f; border-radius: 20px;
             padding: 36px; width: 90%; max-width: 400px;
             border: 1px solid var(--border);
             box-shadow: 0 20px 60px rgba(0,0,0,0.5);
@@ -1025,8 +999,8 @@
         }
         .auth-field input {
             width: 100%; padding: 12px 14px;
-            background: #22222e;
-            border: 1px solid rgba(255,255,255,0.06);
+            background: #1a1a1a;
+            border: 1px solid var(--border);
             border-radius: 12px;
             color: var(--text-primary);
             font-size: 0.9rem; font-family: inherit; outline: none;
@@ -1035,13 +1009,13 @@
         .auth-field input::placeholder { color: var(--text-muted); }
         .auth-submit {
             width: 100%; padding: 12px;
-            background: var(--gold); color: #000;
+            background: #ffffff; color: #000000;
             border: none; border-radius: 12px;
             font-size: 0.92rem; font-weight: 600;
             cursor: pointer; font-family: inherit;
             transition: all 0.25s; margin-top: 8px;
         }
-        .auth-submit:hover { background: var(--gold-hover); }
+        .auth-submit:hover { background: #e0e0e0; }
         .auth-submit:disabled { opacity: 0.5; cursor: not-allowed; }
         .auth-switch {
             text-align: center; margin-top: 16px;
@@ -1079,8 +1053,8 @@
         }
         .image-input {
             flex: 1; padding: 10px 14px;
-            background: #22222e;
-            border: 1px solid rgba(255,255,255,0.06);
+            background: #1a1a1a;
+            border: 1px solid var(--border);
             border-radius: 12px;
             color: var(--text-primary);
             font-size: 0.88rem; font-family: inherit; outline: none;
@@ -1098,17 +1072,15 @@
 
         /* 分享按钮 */
         .btn-share {
-            padding: 12px 20px;
-            background: var(--surface);
+            padding: 10px 18px;
+            background: transparent;
             border: 1px solid var(--border);
-            border-radius: 14px;
+            border-radius: 100px;
             color: var(--text-secondary);
             font-size: 0.92rem; font-weight: 500;
             cursor: pointer; font-family: inherit;
             display: flex; align-items: center; gap: 6px;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            transition: all 0.25s;
+                        transition: all 0.25s;
         }
         .btn-share:hover {
             color: var(--text-primary);
@@ -1123,9 +1095,7 @@
             padding: 12px 24px; border-radius: 14px;
             font-size: 0.9rem;
             border: 1px solid var(--border-focus);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            opacity: 0; transition: all 0.35s cubic-bezier(0.16,1,0.3,1);
+                        opacity: 0; transition: all 0.35s cubic-bezier(0.16,1,0.3,1);
             pointer-events: none; z-index: 200;
         }
         .share-toast.show {
@@ -1135,10 +1105,10 @@
         
         /* 烟花 */
         .btn-firework {
-            padding: 12px 20px;
-            background: linear-gradient(135deg, #ff6b6b, #feca57);
-            border: none;
-            border-radius: 14px;
+            padding: 10px 18px;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 100px;
             color: #fff;
             font-size: 0.92rem;
             font-weight: 600;
@@ -1151,8 +1121,7 @@
             text-shadow: 0 1px 2px rgba(0,0,0,0.2);
         }
         .btn-firework:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255,107,107,0.4);
+            border-color: var(--border-focus);
         }
         #fireworkCanvas {
             position: fixed;
@@ -1464,9 +1433,7 @@
             border-radius: 12px;
             font-size: 0.85rem;
             color: var(--text-primary);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-        }
+                    }
         .auth-avatar-small {
             width: 24px; height: 24px; border-radius: 50%;
             background: rgba(255,255,255,0.08);
@@ -1485,16 +1452,14 @@
         .btn-logout:hover { color: var(--danger); }
         .btn-auth {
             padding: 8px 18px;
-            background: var(--surface);
+            background: transparent;
             border: 1px solid var(--border);
-            border-radius: 12px;
+            border-radius: 100px;
             color: var(--text-secondary);
             font-size: 0.85rem;
             cursor: pointer; font-family: inherit;
             transition: all 0.25s;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-        }
+                    }
         .btn-auth:hover {
             color: var(--text-primary);
             border-color: var(--border-focus);
@@ -1511,7 +1476,7 @@
         }
         .auth-modal-overlay.show { display: flex; }
         .auth-modal {
-            background: #18181f; border-radius: 20px;
+            background: #0f0f0f; border-radius: 20px;
             padding: 36px; width: 90%; max-width: 400px;
             border: 1px solid var(--border);
             box-shadow: 0 20px 60px rgba(0,0,0,0.5);
@@ -1528,8 +1493,8 @@
         }
         .auth-field input {
             width: 100%; padding: 12px 14px;
-            background: #22222e;
-            border: 1px solid rgba(255,255,255,0.06);
+            background: #1a1a1a;
+            border: 1px solid var(--border);
             border-radius: 12px;
             color: var(--text-primary);
             font-size: 0.9rem; font-family: inherit; outline: none;
@@ -1538,13 +1503,13 @@
         .auth-field input::placeholder { color: var(--text-muted); }
         .auth-submit {
             width: 100%; padding: 12px;
-            background: var(--gold); color: #000;
+            background: #ffffff; color: #000000;
             border: none; border-radius: 12px;
             font-size: 0.92rem; font-weight: 600;
             cursor: pointer; font-family: inherit;
             transition: all 0.25s; margin-top: 8px;
         }
-        .auth-submit:hover { background: var(--gold-hover); }
+        .auth-submit:hover { background: #e0e0e0; }
         .auth-submit:disabled { opacity: 0.5; cursor: not-allowed; }
         .auth-switch {
             text-align: center; margin-top: 16px;
@@ -1582,8 +1547,8 @@
         }
         .image-input {
             flex: 1; padding: 10px 14px;
-            background: #22222e;
-            border: 1px solid rgba(255,255,255,0.06);
+            background: #1a1a1a;
+            border: 1px solid var(--border);
             border-radius: 12px;
             color: var(--text-primary);
             font-size: 0.88rem; font-family: inherit; outline: none;
@@ -1601,17 +1566,15 @@
 
         /* 分享按钮 */
         .btn-share {
-            padding: 12px 20px;
-            background: var(--surface);
+            padding: 10px 18px;
+            background: transparent;
             border: 1px solid var(--border);
-            border-radius: 14px;
+            border-radius: 100px;
             color: var(--text-secondary);
             font-size: 0.92rem; font-weight: 500;
             cursor: pointer; font-family: inherit;
             display: flex; align-items: center; gap: 6px;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            transition: all 0.25s;
+                        transition: all 0.25s;
         }
         .btn-share:hover {
             color: var(--text-primary);
@@ -1626,9 +1589,7 @@
             padding: 12px 24px; border-radius: 14px;
             font-size: 0.9rem;
             border: 1px solid var(--border-focus);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            opacity: 0; transition: all 0.35s cubic-bezier(0.16,1,0.3,1);
+                        opacity: 0; transition: all 0.35s cubic-bezier(0.16,1,0.3,1);
             pointer-events: none; z-index: 200;
         }
         .share-toast.show {
@@ -1638,10 +1599,10 @@
         
         /* 烟花 */
         .btn-firework {
-            padding: 12px 20px;
-            background: linear-gradient(135deg, #ff6b6b, #feca57);
-            border: none;
-            border-radius: 14px;
+            padding: 10px 18px;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 100px;
             color: #fff;
             font-size: 0.92rem;
             font-weight: 600;
@@ -1654,8 +1615,7 @@
             text-shadow: 0 1px 2px rgba(0,0,0,0.2);
         }
         .btn-firework:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255,107,107,0.4);
+            border-color: var(--border-focus);
         }
         #fireworkCanvas {
             position: fixed;
