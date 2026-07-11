@@ -158,6 +158,53 @@
             transform: translateY(0);
         }
 
+
+        /* 分享按钮 */
+        .btn-share {
+            padding: 12px 20px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.25s;
+            font-family: inherit;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .btn-share:hover {
+            color: var(--text-primary);
+            border-color: var(--border-focus);
+            background: var(--surface-hover);
+        }
+        .share-toast {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background: rgba(30, 30, 38, 0.95);
+            color: var(--text-primary);
+            padding: 12px 24px;
+            border-radius: 14px;
+            font-size: 0.9rem;
+            border: 1px solid var(--border-focus);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            opacity: 0;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: none;
+            z-index: 200;
+        }
+        .share-toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -1065,6 +1112,7 @@
                     <span class="icon">🆕</span>最新
                 </button>
             </div>
+            <button class="btn-share" onclick="shareLink()">🔗 分享</button>
             <button class="fab-post" onclick="openModal()">✨ 发布帖子</button>
         </div>
 
@@ -1482,11 +1530,52 @@
         heartbeat();
         setInterval(heartbeat, 12 * 60 * 60 * 1000);
 
+
+        // ==================== 分享功能 ====================
+        function shareLink() {
+            const url = window.location.href;
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(url).then(() => {
+                    showShareToast();
+                }).catch(() => {
+                    fallbackCopy(url);
+                });
+            } else {
+                fallbackCopy(url);
+            }
+        }
+
+        function fallbackCopy(text) {
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.position = 'fixed';
+            ta.style.left = '-9999px';
+            document.body.appendChild(ta);
+            ta.select();
+            try {
+                document.execCommand('copy');
+                showShareToast();
+            } catch (e) {
+                prompt('请手动复制链接：', text);
+            }
+            document.body.removeChild(ta);
+        }
+
+        function showShareToast() {
+            const toast = document.getElementById('shareToast');
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2000);
+        }
+
         // ==================== 初始化 ====================
         loadPosts();
     
     
 
 </script>
+
+    <div class="share-toast" id="shareToast">✅ 链接已复制到剪贴板</div>
 </body>
 </html>
