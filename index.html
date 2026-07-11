@@ -1743,6 +1743,7 @@
                 content: content,
                 author: name,
                 avatar: getAvatar(name),
+                image: document.getElementById('modalImage') ? (document.getElementById('modalImage').value.trim() || '') : '',
                 time: Date.now(),
                 likes: 0,
                 comments: []
@@ -1849,6 +1850,7 @@
                             </div>
                         </div>
                         ${post.title ? `<div class="post-title">${post.pinned ? '📌 ' : ''}${escapeHtml(post.title)}</div>` : ''}
+                        ${post.image ? `<div class='post-images'><img src='${escapeHtml(post.image)}' class='post-image' alt='图片' onerror="this.style.display='none'"></div>` : ''}
                         <div class="post-content">${escapeHtml(post.content)}</div>
                         <div class="post-footer">
                             <button class="action-btn ${isLiked ? 'liked' : ''}" onclick="toggleLike('${post.id}')">
